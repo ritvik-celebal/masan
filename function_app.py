@@ -2,7 +2,7 @@ import azure.functions as func
 
 app = func.FunctionApp()
 
-@app.route(route="hello")  # 👈 defines the HTTP-triggered function
+@app.route(route="hello", auth_level=func.AuthLevel.ANONYMOUS)
 def hello(req: func.HttpRequest) -> func.HttpResponse:
     name = req.params.get("name")
     if not name:
