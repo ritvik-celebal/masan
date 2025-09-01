@@ -3,5 +3,6 @@ from functions import hello_world
 
 app = func.FunctionApp()
 
-# Register the simple function
-app.route(route="hello")(hello_world.main)
+@app.route(route="hello")   # 👈 register route
+def hello(req: func.HttpRequest) -> func.HttpResponse:
+    return hello_world.main(req)
